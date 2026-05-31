@@ -1,5 +1,6 @@
 package com.mojh.aiAgent.tools;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.mojh.aiAgent.bean.Appointment;
 import com.mojh.aiAgent.service.AppointmentService;
 import com.mojh.aiAgent.service.impl.AppointmentServiceImpl;
@@ -20,7 +21,7 @@ public class AppointmentTools {
         //查找数据库中是否包含对应的预约记录
         Appointment appointmentDB = appointmentService.getOne(appointment);
         if(appointmentDB == null){
-            appointment.setId(AppointmentServiceImpl.appointmentMap.size() + 1);//防止大模型幻觉设置了id
+            appointment.setId(null);//防止大模型幻觉设置了id
             if(appointmentService.save(appointment)){
                 return "预约成功，并返回预约详情";
             }else{
@@ -35,7 +36,7 @@ public class AppointmentTools {
         Appointment appointmentDB = appointmentService.getOne(appointment);
         if(appointmentDB != null){
         //删除预约记录
-            if(appointmentService.remove(appointmentDB)){
+            if(appointmentService.removeById(appointment.getId())){
                 return "取消预约成功";
             }else{
                 return "取消预约失败";

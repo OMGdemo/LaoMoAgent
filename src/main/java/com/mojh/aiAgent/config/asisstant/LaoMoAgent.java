@@ -11,7 +11,8 @@ import static dev.langchain4j.service.spring.AiServiceWiringMode.EXPLICIT;
         wiringMode = EXPLICIT,
         chatModel = "qwenModel",
         chatMemoryProvider = "chatAssistantLaoMoProvider",
-        tools = "appointmentTools")
+        tools = {"appointmentTools", "calculatorTools"},
+        contentRetriever = "contentRetriever")
 public interface LaoMoAgent {
 
     @SystemMessage(fromResource = "laoMo-agent-systemMessage.txt")

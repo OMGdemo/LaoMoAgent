@@ -1,7 +1,9 @@
 package com.mojh.aiAgent.config.llm;
 
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
+import dev.langchain4j.model.openai.OpenAiEmbeddingModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,9 @@ public class LLMConfig {
     @Value("${deepseek.model-name}")
     private String deepseekModelName;
 
+    @Value("${qwen.embedding.model-name}")
+    private String qwenEmbeddingModelName;
+
     /**
      * 手动创建 Qwen 模型 Bean
      * 这里我们创建带名称的 Bean 以便区分
@@ -46,6 +51,16 @@ public class LLMConfig {
                 .baseUrl(deepseekBaseUrl)
                 .apiKey(deepseekApiKey)
                 .modelName(deepseekModelName)
+                .build();
+    }
+
+    // 8.1、定义向量大模型
+    @Bean("qwenEmbeddingModel")
+    public EmbeddingModel qwenEmbeddingModel() {
+        return OpenAiEmbeddingModel.builder()
+                .baseUrl(qwenBaseUrl)
+                .apiKey(qwenApiKey)
+                .modelName(qwenEmbeddingModelName)
                 .build();
     }
 }

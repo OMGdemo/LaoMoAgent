@@ -7,6 +7,7 @@ import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
 import dev.langchain4j.store.embedding.EmbeddingStoreIngestor;
 import dev.langchain4j.store.embedding.inmemory.InMemoryEmbeddingStore;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +18,15 @@ import java.util.List;
 @Component
 public class ContentRetrieverLaoMo {
 
+    @Value("${rag.file-path}")
+    private String filePath;
+
     @Bean
     public ContentRetriever contentRetriever() {
         // 加载文档
-        Document document1 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\医院信息.md");
-        Document document2 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\科室信息.md");
-        Document document3 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\神经内科.md");
+        Document document1 = FileSystemDocumentLoader.loadDocument(filePath + "医院信息.md");
+        Document document2 = FileSystemDocumentLoader.loadDocument(filePath + "科室信息.md");
+        Document document3 = FileSystemDocumentLoader.loadDocument(filePath + "神经内科.md");
         List<Document> documents = new ArrayList<>(Arrays.asList(document1, document2, document3));
 
         // 创建向量存储器

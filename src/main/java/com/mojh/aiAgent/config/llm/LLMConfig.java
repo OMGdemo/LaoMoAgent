@@ -1,9 +1,11 @@
 package com.mojh.aiAgent.config.llm;
 
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.openai.OpenAiChatModel;
 import dev.langchain4j.model.openai.OpenAiEmbeddingModel;
+import dev.langchain4j.model.openai.OpenAiStreamingChatModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +53,15 @@ public class LLMConfig {
                 .baseUrl(deepseekBaseUrl)
                 .apiKey(deepseekApiKey)
                 .modelName(deepseekModelName)
+                .build();
+    }
+
+    @Bean("qwenStreamingModel")
+    public StreamingChatModel qwenStreamingModel() {
+        return OpenAiStreamingChatModel.builder()
+                .baseUrl(qwenBaseUrl)
+                .apiKey(qwenApiKey)
+                .modelName(qwenModelName)
                 .build();
     }
 

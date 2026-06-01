@@ -20,9 +20,9 @@ public class ContentRetrieverLaoMo {
     @Bean
     public ContentRetriever contentRetriever() {
         // 加载文档
-        Document document1 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\learn\\XzAgent\\src\\main\\resources\\ragFile\\医院信息.md");
-        Document document2 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\learn\\XzAgent\\src\\main\\resources\\ragFile\\科室信息.md");
-        Document document3 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\learn\\XzAgent\\src\\main\\resources\\ragFile\\神经内科.md");
+        Document document1 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\医院信息.md");
+        Document document2 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\科室信息.md");
+        Document document3 = FileSystemDocumentLoader.loadDocument("C:\\Users\\MI\\Desktop\\mojh\\project\\XzAgent\\src\\main\\resources\\ragFile\\神经内科.md");
         List<Document> documents = new ArrayList<>(Arrays.asList(document1, document2, document3));
 
         // 创建向量存储器

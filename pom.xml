@@ -95,15 +95,25 @@
         </dependency>
 
         <!-- 向量化数据，rag实现 -->
-        <dependency>
-            <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-qdrant</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-qdrant</artifactId>-->
+<!--        </dependency>-->
 
-        <!-- Elasticsearch 向量存储 -->
+<!--        &lt;!&ndash; Elasticsearch 向量存储 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-elasticsearch</artifactId>-->
+<!--        </dependency>-->
+
+        <!--流式输出-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
         <dependency>
             <groupId>dev.langchain4j</groupId>
-            <artifactId>langchain4j-elasticsearch</artifactId>
+            <artifactId>langchain4j-reactor</artifactId>
         </dependency>
     </dependencies>
 
